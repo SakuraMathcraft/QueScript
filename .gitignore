@@ -1,0 +1,30 @@
+# Python cache and virtual env
+__pycache__/
+*.py[cod]
+*.pyd
+.venv/
+
+# Build artifacts
+build/
+dist/
+
+# IDE files
+.idea/
+.vscode/
+
+# Local runtime outputs
+mock_survey/config.json
+mock_survey/path_log.csv
+mock_survey/survey_data_collected.csv
+mock_survey/__pycache__/
+packaging/__pycache__/
+packaging/_size_report.json
+
+# Large local browser/bundle files
+ms-playwright/
+chrome-win64.zip
+
+# OS files
+.DS_Store
+Thumbs.db
+
