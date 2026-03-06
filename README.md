@@ -23,33 +23,14 @@ QueScript 面向“**全流程问卷仿真 + 测量质量评估**”场景，强
 - 题级与结构级分析（Alpha、KMO/Bartlett、CR、CITC、EFA、CFA/Omega）
 - 审计与复现产物输出（`config.json`、`path_log.csv`、`analysis_meta.json`）
 
-## Star 趋势
-
-<a href="https://star-history.com/#SakuraMathcraft/QueScript&Date" target="_blank">
-  <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=SakuraMathcraft/QueScript&type=Date" />
-</a>
-
-## 功能矩阵
-
-| 模块 | 能力说明 |
-|---|---|
-| 问卷生成 | 将问卷文本解析为 `index.html` |
-| 智能模拟 | 批量填写、分支跳题、作答倾向与潜变量控制 |
-| 统计分析 | 信效度、区分度、EFA/CFA、分支感知分析 |
-| 审计复现 | `run_id + seed + 配置快照 + 路径日志 + 分析快照` |
-| 打包发布 | Windows 离线打包（PyInstaller + 安装脚本） |
-
 ## 界面截图
-
-> 下图为仓库内置占位图；可将真实截图替换为同名文件以展示实际界面效果。
-
 ### GUI 主界面
 
-![GUI Main](docs/images/gui-main.svg)
+<img width="1919" height="1018" alt="问卷模拟大师" src="https://github.com/user-attachments/assets/c7bf8e8c-8ac4-45c9-a9cb-4989f61b03ea" />
 
 ### 报告示例
 
-![Report Sample](docs/images/report-sample.svg)
+<img width="1919" height="1018" alt="问卷模拟大师" src="https://github.com/user-attachments/assets/b5e01d78-f95d-40d8-8b0a-8f41aba5853f" />
 
 ## 快速开始
 
@@ -68,7 +49,21 @@ Windows 双击方式：
 cd mock_survey
 run_gui.bat
 ```
+## Star 趋势
 
+<a href="https://star-history.com/#SakuraMathcraft/QueScript&Date" target="_blank">
+  <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=SakuraMathcraft/QueScript&type=Date" />
+</a>
+
+## 功能矩阵
+
+| 模块 | 能力说明 |
+|---|---|
+| 问卷生成 | 将问卷文本解析为 `index.html` |
+| 智能模拟 | 批量填写、分支跳题、作答倾向与潜变量控制 |
+| 统计分析 | 信效度、区分度、EFA/CFA、分支感知分析 |
+| 审计复现 | `run_id + seed + 配置快照 + 路径日志 + 分析快照` |
+| 打包发布 | Windows 离线打包（PyInstaller + 安装脚本） |
 ## 离线打包（Windows）
 
 ```powershell
