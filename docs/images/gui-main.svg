@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-label="GUI screenshot placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg)" />
+  <rect x="70" y="60" width="1060" height="580" rx="16" fill="#0b1220" stroke="#334155" />
+  <rect x="95" y="90" width="250" height="30" rx="8" fill="#1d4ed8" />
+  <rect x="365" y="90" width="250" height="30" rx="8" fill="#334155" />
+  <rect x="95" y="145" width="720" height="420" rx="10" fill="#111827" stroke="#334155" />
+  <rect x="840" y="145" width="265" height="420" rx="10" fill="#111827" stroke="#334155" />
+  <rect x="95" y="585" width="1010" height="24" rx="8" fill="#1e40af" />
+  <text x="600" y="355" fill="#cbd5e1" font-size="32" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif">GUI Main Screenshot Placeholder</text>
+  <text x="600" y="395" fill="#94a3b8" font-size="20" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif">Replace this file with an actual app screenshot</text>
+</svg>
+
