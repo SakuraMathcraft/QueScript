@@ -4,6 +4,7 @@ import time
 import math
 import json
 import hashlib
+import re
 from datetime import datetime
 from playwright.sync_api import sync_playwright
 
@@ -243,6 +244,13 @@ class SurveySimulator:
                         if q is None:
                             break
 
+                        show_if_rule = self._parse_show_if(q)
+                        if not self._is_question_visible_by_rule(show_if_rule, session_response):
+                            src = show_if_rule.get("source_qid", "-") if show_if_rule else "-"
+                            jump_events.append(f"semantic skip Q{current_qid} by show_if(source=Q{src})")
+                            current_qid = self._resolve_next_qid(ordered_qids, current_qid, "")
+                            continue
+
                         q_type = q.get_attribute("data-type")
                         val = None
                         jump_target = ""
@@ -470,3 +478,34 @@ class SurveySimulator:
             # Simulate human delay if not purely instant
             if base_wait > 0.1:
                 time.sleep(base_wait * random.uniform(0.5, 1.5))
+
+    def _parse_show_if(self, question_el):
+        raw = question_el.get_attribute("data-show-if")
+        if not raw:
+            return None
+        try:
+            return json.loads(raw)
+        except Exception:
+            return None
+
+    def _is_question_visible_by_rule(self, rule, session_response):
+        if not rule:
+            return True
+        src_qid = str(rule.get("source_qid", "")).strip()
+        if not src_qid:
+            return True
+
+        src_answer = session_response.get(f"Q{src_qid}")
+        if src_answer is None:
+            return False
+
+        allowed = [str(v).strip() for v in (rule.get("allowed_values") or [])]
+        if not allowed:
+            return True
+
+        raw = str(src_answer)
+        values = [v.strip() for v in re.split(r"[;|,]", raw) if v.strip()]
+        if not values:
+            values = [raw.strip()]
+
+        return any(v in allowed for v in values)

@@ -4,3 +4,4 @@ ttkbootstrap
 pandas
 numpy
 scipy
+semopy

@@ -34,7 +34,7 @@ if playwright_cache.exists():
 binaries = []
 hiddenimports = []
 
-for pkg in ["ttkbootstrap", "playwright", "numpy", "pandas", "scipy"]:
+for pkg in ["ttkbootstrap", "playwright", "numpy", "pandas", "scipy", "semopy"]:
     d, b, h = collect_all(pkg)
     datas += d
     binaries += b
