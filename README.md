@@ -24,9 +24,7 @@ QueScript 面向“**全流程问卷仿真 + 测量质量评估**”场景，强
 - 审计与复现产物输出（`config.json`、`path_log.csv`、`analysis_meta.json`）
 
 ## 界面截图
-### GUI 主界面
-
-<img width="1919" height="1018" alt="问卷模拟大师" src="https://github.com/user-attachments/assets/c7bf8e8c-8ac4-45c9-a9cb-4989f61b03ea" />
+### GUI 主界面/>
 
 ### 报告示例
 
