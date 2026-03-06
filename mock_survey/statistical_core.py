@@ -383,6 +383,18 @@ class StatAnalyzer:
         return float(np.clip(num / den, 0.0, 1.0))
 
     @staticmethod
+    def _sanitize_sem_name(name, fallback="F"):
+        raw = str(name or "").strip()
+        # semopy names should be identifier-like; replace unsupported chars.
+        safe = "".join(ch if (ch.isalnum() or ch == "_") else "_" for ch in raw)
+        safe = safe.strip("_")
+        if not safe:
+            safe = fallback
+        if safe[0].isdigit():
+            safe = f"{fallback}_{safe}"
+        return safe
+
+    @staticmethod
     def run_cfa_validation(df, n_factors=1, dimension_groups=None):
         work = StatAnalyzer._to_numeric_df(df)
         if work.shape[1] < 3:
@@ -398,10 +410,18 @@ class StatAnalyzer:
         # Preferred path: theory/branch-aware dimensions provided by caller.
         if dimension_groups:
             lines = []
-            for dim, cols in dimension_groups.items():
+            used_names = set()
+            for idx, (dim, cols) in enumerate(dimension_groups.items(), 1):
                 keep = [c for c in cols if c in work.columns]
                 if len(keep) >= 3:
-                    lines.append(f"{dim} =~ " + " + ".join(keep))
+                    base = StatAnalyzer._sanitize_sem_name(dim, fallback=f"D{idx}")
+                    sem_name = base
+                    suffix = 2
+                    while sem_name in used_names:
+                        sem_name = f"{base}_{suffix}"
+                        suffix += 1
+                    used_names.add(sem_name)
+                    lines.append(f"{sem_name} =~ " + " + ".join(keep))
             if lines:
                 model_desc = "\n".join(lines)
             else:
